@@ -11,6 +11,8 @@ public class CreateFile {
     //Si no existe crearlo
     //Pasar mensaje como parámetro
 
+    //Usar el bufferer reader
+
     public void crearEscribirFile(){
 
         String fileName = "mensaje.txt";
