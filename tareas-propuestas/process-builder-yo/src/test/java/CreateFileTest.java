@@ -7,7 +7,7 @@ public class CreateFileTest {
 
     CreateFile createFile;
 
-    String mensaje = "Mensaje como parámetro";
+    String mensaje = "soy una linea del proceso(n)";
 
     @BeforeEach
     public void beforeEach() {
