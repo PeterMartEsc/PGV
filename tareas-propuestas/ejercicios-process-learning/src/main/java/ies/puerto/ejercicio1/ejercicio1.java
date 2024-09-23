@@ -20,4 +20,4 @@ public class ejercicio1 {
     }
 }
 
-//mvn exec:java -Dexec.mainClass="es.ies.puerto.ProcessBuilderClass" -Dexec.args="1 ping google.com"
+//mvn exec:java -Dexec.mainClass="ies.puerto.ejercicio1" -Dexec.args="1 ping google.com"

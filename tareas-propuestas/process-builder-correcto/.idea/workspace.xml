@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f534db3-4888-46f1-9ccd-6798ea348433" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio1/ejercicio1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/src/main/java/ies/puerto/CreateFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/src/main/java/ies/puerto/CreateInstances.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/src/main/resources/mensaje.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tarea-propuesta-1/src/test/java/CreateFileTest.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio2/ejercicio2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio3/ejercicio3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio4/ejercicio4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio1/ejercicio1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio1/ejercicio1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +22,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2mIBAOxN7nD0TpB4yrT4aqoH9Vs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -43,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/dam/PeterMartEsc/PGV/tareas-propuestas/process-builder-correcto"
+    "last_opened_file_path": "/home/dam/PeterMartEsc/PGV/tareas-propuestas/ejercicios-process-learning"
   }
 }]]></component>
   <component name="RunManager">
