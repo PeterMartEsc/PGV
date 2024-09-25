@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ejercicio5 {
 
-    public static final String COMMAND = "ls";
+    public static final String COMMAND = "cat noexisto.txt";
 
     public static void main(String[] args) {
         System.out.println(redirigirFallos(COMMAND));

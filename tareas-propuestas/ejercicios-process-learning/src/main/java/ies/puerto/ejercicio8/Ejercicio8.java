@@ -1,15 +1,22 @@
-package ies.puerto.ejercicio7;
+package ies.puerto.ejercicio8;
 
 import java.io.IOException;
 
-public class Ejercicio7 {
+public class Ejercicio8 {
 
     public static void main(String[] args) {
-        ProcessBuilder pb = new ProcessBuilder("ping", "google.com");
+        ProcessBuilder pb = new ProcessBuilder("ping", "-c", "3", "www.google.com");
+
         try {
-            long tiempoInicio = System.nanoTime();
+            long tiempoInicio = System.currentTimeMillis();
             Process proceso = pb.start();
-        } catch (IOException e) {
+            proceso.waitFor();
+            long tiempoFinal = System.currentTimeMillis();
+
+            long tiempoEjecucion = tiempoFinal - tiempoInicio;
+
+            System.out.println("El comando ha tardado " + tiempoEjecucion+ " milisegundos");
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }
     }

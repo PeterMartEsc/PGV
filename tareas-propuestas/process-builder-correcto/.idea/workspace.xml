@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f534db3-4888-46f1-9ccd-6798ea348433" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio2/ejercicio2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio3/ejercicio3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio4/ejercicio4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio1/ejercicio1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio1/ejercicio1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio6/Ejercicio6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio6/WorkerClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio7/Ejercicio7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio5/ejercicio5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ejercicios-process-learning/src/main/java/ies/puerto/ejercicio5/ejercicio5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +36,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/dam/PeterMartEsc/PGV/tareas-propuestas/ejercicios-process-learning"
+    "last_opened_file_path": "/home/dam/PeterMartEsc/PGV/tareas-propuestas/process-builder-correcto"
   }
 }]]></component>
   <component name="RunManager">
