@@ -13,8 +13,8 @@ public class Ejercicio04Writter {
 
         String fileName = args[0];
 
-        try {
-            BufferedWriter br = new BufferedWriter(new FileWriter(fileName));
+        try (BufferedWriter br = new BufferedWriter(new FileWriter(fileName))){
+
             br.write("Esto es un mensaje");
         } catch (IOException e) {
             throw new RuntimeException(e);

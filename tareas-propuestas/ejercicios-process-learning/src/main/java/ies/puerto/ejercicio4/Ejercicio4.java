@@ -7,8 +7,8 @@ public class Ejercicio4 {
     static String [] EXEC_INFO = {
             "java",
             "-cp", System.getProperty("java.class.path"),
-            "es.ies.puerto.ejercicio4.Ejercicio4Writter",
-            "texto.txt"
+            "ies.puerto.ejercicio4.Ejercicio04Writter",
+            "src/main/java/ies/puerto/ejercicio4/mensaje.txt"
     };
 
     public static void main(String[] args) {
@@ -19,9 +19,9 @@ public class Ejercicio4 {
 
     public static boolean ejecutarOtraCLase(String [] infoExec){
 
+        ProcessBuilder processBuilder = new ProcessBuilder(infoExec);
 
         try {
-            ProcessBuilder processBuilder = new ProcessBuilder(infoExec);
             Process proceso = processBuilder.start();
 
             int codigoSalida = proceso.waitFor();

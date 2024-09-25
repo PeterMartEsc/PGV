@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ejercicio5 {
 
-    public static final String COMMAND = "dir";
+    public static final String COMMAND = "ls";
 
     public static void main(String[] args) {
         System.out.println(redirigirFallos(COMMAND));
@@ -17,7 +17,7 @@ public class ejercicio5 {
     public static boolean redirigirFallos(String comando){
         //Crea el proceso
         ProcessBuilder pb = new ProcessBuilder(comando.split(" "));
-        pb.redirectErrorStream(true);   //Se redirigen el ¿Stream de Errores?
+        pb.redirectErrorStream(true);   //Se redirigen el error stream
 
         try {
             Process proceso = pb.start();

@@ -2,7 +2,7 @@ package ies.puerto.ejercicio1;
 
 import java.io.IOException;
 
-public class ejercicio1 {
+public class Ejercicio1 {
     public static void main(String[] args) {
         // Crear un nuevo proceso que ejecuta el comando 'ping'
         ProcessBuilder pb = new ProcessBuilder("ping", "-c", "3", "google.com");

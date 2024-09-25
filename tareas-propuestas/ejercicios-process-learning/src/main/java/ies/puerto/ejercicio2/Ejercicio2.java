@@ -2,7 +2,7 @@ package ies.puerto.ejercicio2;
 
 import java.io.IOException;
 
-public class ejercicio2 {
+public class Ejercicio2 {
 
     public static void main(String[] args) {
         ProcessBuilder procesoPing = new ProcessBuilder("ping", "-c", "3", "google.com");
