@@ -1,4 +1,4 @@
-package ies.puerto.ejercicio1;
+package ies.puerto.ejercicio1.modoEstandar;
 
 import java.util.Random;
 
@@ -41,10 +41,10 @@ public class BatallaPokemon implements Runnable {
     }
 
     public static void main(String[] args) {
-        Thread goku = new Thread(new BatallaPokemon("Pikachu"));
-        Thread vegeta = new Thread(new BatallaPokemon("Charmander"));
+        Thread pikachu = new Thread(new BatallaPokemon("Pikachu"));
+        Thread charmander = new Thread(new BatallaPokemon("Charmander"));
 
-        goku.start();
-        vegeta.start();
+        pikachu.start();
+        charmander.start();
     }
 }

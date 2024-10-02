@@ -8,13 +8,12 @@ import java.util.Random;
  * Deberás lanzar dos hilos y hacer que se detengan cuando uno de los Pokémon gane.
  */
 public class BatallaPokemon implements Runnable {
-    private String name;
-    private int vida = 100;
 
+   /*
     private static final int FIN_PARTIDA = 0;
     private static boolean winnerDeclared = false;
 
-    public BatallaPokemon(String name) {
+    /*public BatallaPokemon(String name) {
         this.name = name;
     }
 
@@ -41,10 +40,14 @@ public class BatallaPokemon implements Runnable {
     }
 
     public static void main(String[] args) {
-        Thread goku = new Thread(new BatallaPokemon("Pikachu"));
-        Thread vegeta = new Thread(new BatallaPokemon("Charmander"));
+        Thread pikachu = new Thread((Runnable) new Pokemon("Pikachu"));
+        Thread charmander = new Thread((Runnable) new Pokemon("Charmander"));
 
-        goku.start();
-        vegeta.start();
+        pikachu.start();
+        charmander.start();
     }
+    */
+   @Override
+   public void run() {}
+
 }

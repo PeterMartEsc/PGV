@@ -1,15 +1,15 @@
-package ies.puerto.ejercicio1.modoEstandar;
+package ies.puerto.ejercicio1.modoPedro;
 
 import java.util.Objects;
 
-public class PokemonClass {
+public class Pokemon {
     private String name;
     private int vida;
 
-    public PokemonClass() {
+    public Pokemon() {
     }
 
-    public PokemonClass(String name) {
+    public Pokemon(String name) {
         this.name = name;
         this.vida = 100;
     }
@@ -34,7 +34,7 @@ public class PokemonClass {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PokemonClass that = (PokemonClass) o;
+        Pokemon that = (Pokemon) o;
         return Objects.equals(name, that.name);
     }
 
