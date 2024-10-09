@@ -11,10 +11,9 @@ import java.util.Random;
  */
 public class FabricaDroides implements Runnable {
     private String name;
-    //private int distance = 0;
-    //private static final int GOAL = 100;
-    boolean Running = true;
-    private static boolean horrocruxEncontrado = false;
+
+    private boolean ensamblados = false;
+    private boolean activados = false;
 
     public FabricaDroides(String name) {
         this.name = name;
@@ -22,40 +21,48 @@ public class FabricaDroides implements Runnable {
 
     @Override
     public void run() {
-        Random random = new Random();
-        boolean busquedaAcabada = false;
-        long tiempoInicio = System.currentTimeMillis();
-        long tiempoBuscar = random.nextInt(10000) + 1000; // Avance aleatorio de 1000 a 10000 milisegundos (1 a 10 seg)
+        int aux = 0;
 
-        System.out.println(name+" está buscando");
-
-        while (!busquedaAcabada) {
-            if(horrocruxEncontrado){
-                busquedaAcabada = true;
-            }
-            long tiempoFinal = System.currentTimeMillis();
-            if ((tiempoFinal-tiempoInicio == tiempoBuscar) && !horrocruxEncontrado) {
-                horrocruxEncontrado = true;
-                System.out.println(name + " ha encontrado el horrocrux! Venid a destruirlo");
+        while(aux < 2){
+            if(!ensamblados){
+                ensamblados = true;
+                aux++;
+                System.out.println(name+ " está ensamblando");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
-            //try {
-            //Thread.sleep(500); // Pausa entre pasos
-            //} //catch (InterruptedException e) {
-            //e.printStackTrace();
-            //}
+            if(!activados && ensamblados){
+                activados = true;
+                aux++;
+                System.out.println(name + " está activando...");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
+
+        if(activados && ensamblados){
+            System.out.println("Droide activado y ensamblado");
+        }
+
+
     }
 
 
 
     public static void main(String[] args) {
-        Thread harry = new Thread(new BatallaHorrocruxes("Harry"));
-        Thread hermione = new Thread(new BatallaHorrocruxes("Hermione"));
-        Thread ron = new Thread(new BatallaHorrocruxes("Ron"));
+        Thread hilo1 = new Thread(new FabricaDroides("Trabajador 1"));
+        Thread hilo2 = new Thread(new FabricaDroides("Trabajador 2"));
 
-        harry.start();
-        hermione.start();
-        ron.start();
+
+        hilo1.start();
+        hilo2.start();
+
     }
 }

@@ -12,7 +12,7 @@ public class BatallaHorrocruxes implements Runnable {
     private String name;
     //private int distance = 0;
     //private static final int GOAL = 100;
-    boolean Running = true;
+
     private static boolean horrocruxEncontrado = false;
 
     public BatallaHorrocruxes(String name) {
