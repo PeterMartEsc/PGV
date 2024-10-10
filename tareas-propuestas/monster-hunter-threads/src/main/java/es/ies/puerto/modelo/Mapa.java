@@ -50,15 +50,11 @@ public class Mapa {
     }
 
     public synchronized void agregarMonstruo(Monster monster){
-
         positionsMonster.put(monster.getPositionX(), monster.getPositionY());
-
     }
 
     public synchronized void agregarHunter(Hunter hunter){
-
         positionsHunter.put(hunter.getPositionX(), hunter.getPositonY());
-
     }
 
     private boolean pelea(){
