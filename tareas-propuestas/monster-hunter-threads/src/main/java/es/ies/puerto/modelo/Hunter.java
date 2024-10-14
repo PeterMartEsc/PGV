@@ -1,8 +1,6 @@
 package es.ies.puerto.modelo;
 
-import java.util.HashMap;
 import java.util.Objects;
-import java.util.Random;
 
 public class Hunter {
     private int id;
@@ -11,14 +9,14 @@ public class Hunter {
 
     private int positionX;
 
-    private int positonY;
+    private int positionY;
 
-    public Hunter(int id, String nombre, int monstruosAtrapados, int positionX, int positonY) {
+    public Hunter(int id, String nombre, int monstruosAtrapados, int positionX, int positionY) {
         this.id = id;
         this.nombre = nombre;
         this.monstruosAtrapados = monstruosAtrapados;
         this.positionX = positionX;
-        this.positonY = positonY;
+        this.positionY = positionY;
     }
 
     public int getId() {
@@ -53,12 +51,12 @@ public class Hunter {
         this.positionX = positionX;
     }
 
-    public int getPositonY() {
-        return positonY;
+    public int getPositionY() {
+        return positionY;
     }
 
-    public void setPositonY(int positonY) {
-        this.positonY = positonY;
+    public void setPositionY(int positionY) {
+        this.positionY = positionY;
     }
 
     @Override
@@ -81,7 +79,7 @@ public class Hunter {
                 ", nombre='" + nombre + '\'' +
                 ", monstruosAtrapados=" + monstruosAtrapados +
                 ", positionX=" + positionX +
-                ", positonY=" + positonY +
+                ", positonY=" + positionY +
                 '}';
     }
 }
