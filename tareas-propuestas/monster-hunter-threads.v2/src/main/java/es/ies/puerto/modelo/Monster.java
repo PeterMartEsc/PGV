@@ -7,7 +7,6 @@ public class Monster {
     private int id;
     private String name;
     private int positionX;
-
     private int positionY;
 
     public Monster(int id, String name, int positionX, int positionY) {

@@ -10,9 +10,9 @@ public class MonsterHunter extends Thread {
     private Hunter hunter;
     private Monster monster;
 
-    private static Mapa mapa = new Mapa(1);
+    private static Mapa mapa = new Mapa(1, 9);
     private final static int TIEMPO_MAXIMO = 20000;
-    private final static boolean TIEMPO_AGOTADO = false;
+    private static boolean TIEMPO_AGOTADO = false;
 
     public MonsterHunter(Hunter hunter) {
         this.hunter = hunter;
@@ -24,26 +24,24 @@ public class MonsterHunter extends Thread {
     public synchronized static void moverse(Hunter hunter){
 
         Random random = new Random();
-        int movimientoX = random.nextInt(9);
-        int movimientoY = random.nextInt(9);
-
-        hunter.setPositionX(movimientoX);
-        hunter.setPositionY(movimientoY);
+        hunter.setPositionX(random.nextInt(mapa.getTamanio()));
+        hunter.setPositionY(random.nextInt(mapa.getTamanio()));
 
         System.out.println(hunter.getNombre() + " se movió a: X=" +hunter.getPositionX()+" Y=" +hunter.getPositionY());
 
         mapa.setHunterPositionX(hunter.getPositionX());
         mapa.setHunterPositionY(hunter.getPositionY());
 
+
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
     public synchronized static void explorar(Hunter hunter, Monster monster){
-        if(hunter.getPositionX() == monster.getPositionX() && hunter.getPositionY() == monster.getPositionY()){
+        if(mapa.getHunterPositionX() == mapa.getMonsterPositionX() && mapa.getHunterPositionY() == mapa.getMonsterPositionY()){
             if(mapa.pelea()){
                 System.out.println(hunter.getNombre() + " ha capturado a " + monster.getName());
                 hunter.setMonstruosAtrapados(1);
@@ -63,7 +61,7 @@ public class MonsterHunter extends Thread {
 
     public static void main(String[] args) {
 
-        Random random = new Random();
+        //Random random = new Random();
         //Monster rathalos = new Monster(1, "Rathalos", random.nextInt(9), random.nextInt(9));
         Monster rathalos = new Monster(1, "Rathalos",9, 9);
         Hunter maxi = new Hunter(1, "Maxi",0 , 0,0);
@@ -81,7 +79,7 @@ public class MonsterHunter extends Thread {
 
         long tiempoInicio = System.currentTimeMillis();
 
-        while(maxi.getMonstruosAtrapados() == 0){
+        while(maxi.getMonstruosAtrapados() == 0 && !TIEMPO_AGOTADO){
             long tiempoActual = System.currentTimeMillis();
 
             moverse(maxi);
@@ -89,11 +87,11 @@ public class MonsterHunter extends Thread {
 
             if(tiempoActual - tiempoInicio >= TIEMPO_MAXIMO){
                 System.out.println("Se ha acabado el tiempo");
-                break;
+                TIEMPO_AGOTADO = true;
             }
         }
 
-        System.out.println("La cacería ha terminado");
+        System.out.println("La cacería ha terminado " + maxi.getNombre() + " ha cazado " +maxi.getMonstruosAtrapados());
 
     }
 }

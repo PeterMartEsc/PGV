@@ -16,17 +16,24 @@ public class Mapa {
     private int monsterPositionX;
     private int monsterPositionY;
 
-    public Mapa(int mapId) {
+    private int tamanio;
+
+    /*public Mapa(int mapId) {
         this.mapId = mapId;
+    }*/
+
+    public Mapa(int mapId, int tamanio) {
+        this.mapId = mapId;
+        this.tamanio = tamanio;
     }
 
-    public Mapa(int mapId, int hunterPositionX, int hunterPositionY, int monsterPositionX, int monsterPositionY) {
+    /*public Mapa(int mapId, int hunterPositionX, int hunterPositionY, int monsterPositionX, int monsterPositionY) {
         this.mapId = mapId;
         this.hunterPositionX = hunterPositionX;
         this.hunterPositionY = hunterPositionY;
         this.monsterPositionX = monsterPositionX;
         this.monsterPositionY = monsterPositionY;
-    }
+    }*/
 
     public int getMapId() {
         return mapId;
@@ -68,6 +75,14 @@ public class Mapa {
         this.monsterPositionY = monsterPositionY;
     }
 
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
+    }
+
     /*public synchronized void agregarMonstruo(Monster monster){
         positionsMonster.put(monster.getPositionX(), monster.getPositionY());
     }
@@ -99,4 +114,15 @@ public class Mapa {
         return Objects.hash(mapId);
     }
 
+    @Override
+    public String toString() {
+        return "Mapa{" +
+                "mapId=" + mapId +
+                ", hunterPositionX=" + hunterPositionX +
+                ", hunterPositionY=" + hunterPositionY +
+                ", monsterPositionX=" + monsterPositionX +
+                ", monsterPositionY=" + monsterPositionY +
+                ", tamanio=" + tamanio +
+                '}';
+    }
 }

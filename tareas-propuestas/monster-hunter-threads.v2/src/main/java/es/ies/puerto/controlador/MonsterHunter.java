@@ -4,15 +4,18 @@ import es.ies.puerto.modelo.Hunter;
 import es.ies.puerto.modelo.Mapa;
 import es.ies.puerto.modelo.Monster;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class MonsterHunter extends Thread {
     private Hunter hunter;
     private Monster monster;
 
-    private static Mapa mapa = new Mapa(1);
+    private static Mapa mapa = new Mapa(1, 9);
     private final static int TIEMPO_MAXIMO = 20000;
-    private final static boolean TIEMPO_AGOTADO = false;
+    private static boolean TIEMPO_AGOTADO = false;
 
     public MonsterHunter(Hunter hunter) {
         this.hunter = hunter;
@@ -24,8 +27,8 @@ public class MonsterHunter extends Thread {
     public synchronized static void moverse(Hunter hunter){
 
         Random random = new Random();
-        hunter.setPositionX(random.nextInt(9));
-        hunter.setPositionY(random.nextInt(9));
+        hunter.setPositionX(random.nextInt(mapa.getTamanio()));
+        hunter.setPositionY(random.nextInt(mapa.getTamanio()));
 
         System.out.println(hunter.getNombre() + " se movió a: X=" +hunter.getPositionX()+" Y=" +hunter.getPositionY());
 
@@ -61,9 +64,8 @@ public class MonsterHunter extends Thread {
 
     public static void main(String[] args) {
 
-        //Random random = new Random();
-        //Monster rathalos = new Monster(1, "Rathalos", random.nextInt(9), random.nextInt(9));
-        Monster rathalos = new Monster(1, "Rathalos",9, 9);
+        generarMonstruos();
+        //Monster rathalos = new Monster(1, "Rathalos",9, 9);
         Hunter maxi = new Hunter(1, "Maxi",0 , 0,0);
 
         mapa.setHunterPositionX(maxi.getPositionX());
@@ -79,7 +81,7 @@ public class MonsterHunter extends Thread {
 
         long tiempoInicio = System.currentTimeMillis();
 
-        while(maxi.getMonstruosAtrapados() == 0){
+        while(maxi.getMonstruosAtrapados() == 0 && !TIEMPO_AGOTADO){
             long tiempoActual = System.currentTimeMillis();
 
             moverse(maxi);
@@ -87,11 +89,24 @@ public class MonsterHunter extends Thread {
 
             if(tiempoActual - tiempoInicio >= TIEMPO_MAXIMO){
                 System.out.println("Se ha acabado el tiempo");
-                break;
+                TIEMPO_AGOTADO = true;
             }
         }
 
         System.out.println("La cacería ha terminado " + maxi.getNombre() + " ha cazado " +maxi.getMonstruosAtrapados());
 
+    }
+
+    public static void generarMonstruos(){
+        Random random = new Random();
+
+        ArrayList<String> nombres = new ArrayList<>(Arrays.asList("Rathalos", "Wyvern", "Relicto", "Gore Magala", "Laviente", "Laviente Berserker"));
+
+        for(int i = 0 ;  i<=3 ; i++){
+            Monster monster = new Monster(i, nombres.get(random.nextInt()), random.nextInt(mapa.getTamanio()), random.nextInt(mapa.getTamanio()));
+            mapa.agregarMonstruo(monster);
+        }
+
+        
     }
 }

@@ -1,5 +1,6 @@
 package es.ies.puerto.modelo;
 
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
@@ -10,21 +11,17 @@ import java.util.Random;
 public class Mapa {
 
     private int mapId;
-    private int hunterPositionX;
-    private int hunterPositionY;
-    private int monsterPositionX;
-    private int monsterPositionY;
+    private int tamanio;
+    private HashMap<Integer, Hunter> listaHunters;
+    private HashMap<Integer, Monster> listaMonsters;
 
-    public Mapa(int mapId) {
+    /*public Mapa(int mapId) {
         this.mapId = mapId;
-    }
+    }*/
 
-    public Mapa(int mapId, int hunterPositionX, int hunterPositionY, int monsterPositionX, int monsterPositionY) {
+    public Mapa(int mapId, int tamanio) {
         this.mapId = mapId;
-        this.hunterPositionX = hunterPositionX;
-        this.hunterPositionY = hunterPositionY;
-        this.monsterPositionX = monsterPositionX;
-        this.monsterPositionY = monsterPositionY;
+        this.tamanio = tamanio;
     }
 
     public int getMapId() {
@@ -35,45 +32,37 @@ public class Mapa {
         this.mapId = mapId;
     }
 
-    public int getHunterPositionX() {
-        return hunterPositionX;
+    public int getTamanio() {
+        return tamanio;
     }
 
-    public void setHunterPositionX(int hunterPositionX) {
-        this.hunterPositionX = hunterPositionX;
+    public void setTamanio(int tamanio) {
+        this.tamanio = tamanio;
     }
 
-    public int getHunterPositionY() {
-        return hunterPositionY;
+    public HashMap<Integer, Hunter> getListaHunters() {
+        return listaHunters;
     }
 
-    public void setHunterPositionY(int hunterPositionY) {
-        this.hunterPositionY = hunterPositionY;
+    public void setListaHunters(HashMap<Integer, Hunter> listaHunters) {
+        this.listaHunters = listaHunters;
     }
 
-    public int getMonsterPositionX() {
-        return monsterPositionX;
+    public HashMap<Integer, Monster> getListaMonsters() {
+        return listaMonsters;
     }
 
-    public void setMonsterPositionX(int monsterPositionX) {
-        this.monsterPositionX = monsterPositionX;
-    }
-
-    public int getMonsterPositionY() {
-        return monsterPositionY;
-    }
-
-    public void setMonsterPositionY(int monsterPositionY) {
-        this.monsterPositionY = monsterPositionY;
-    }
-
-    /*public synchronized void agregarMonstruo(Monster monster){
-        positionsMonster.put(monster.getPositionX(), monster.getPositionY());
+    public void setListaMonsters(HashMap<Integer, Monster> listaMonsters) {
+        this.listaMonsters = listaMonsters;
     }
 
     public synchronized void agregarHunter(Hunter hunter){
-        positionsHunter.put(hunter.getPositionX(), hunter.getPositonY());
-    }*/
+        listaHunters.put(hunter.getId(), hunter);
+    }
+
+    public synchronized void agregarMonstruo(Monster monster){
+        listaMonsters.put(monster.getId(), monster);
+    }
 
     public boolean pelea(){
         Random random = new Random();
@@ -97,5 +86,6 @@ public class Mapa {
     public int hashCode() {
         return Objects.hash(mapId);
     }
+
 
 }
