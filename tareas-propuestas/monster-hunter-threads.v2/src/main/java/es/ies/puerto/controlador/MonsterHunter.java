@@ -37,16 +37,16 @@ public class MonsterHunter extends Thread {
         while(!TIEMPO_AGOTADO){
             long tiempoActual = System.currentTimeMillis();
 
-            if(tiempoActual - tiempoInicio >= TIEMPO_MAXIMO){
-                System.out.println("Se ha acabado el tiempo");
-                TIEMPO_AGOTADO = true;
-            }
-
             for(Hunter hunter : mapa.getListaHunters().values()){
                 moverHunter(hunter);
                 for(Monster monster : mapa.getListaMonsters().values()){
                     moverMonster(monster);
                 }
+            }
+
+            if(tiempoActual - tiempoInicio >= TIEMPO_MAXIMO){
+                System.out.println("Se ha acabado el tiempo");
+                TIEMPO_AGOTADO = true;
             }
 
         }
@@ -57,15 +57,15 @@ public class MonsterHunter extends Thread {
             System.out.println(hunter.getNombre() + " ha cazado " +hunter.getMonstruosAtrapados());
         }
 
-        System.out.println("Los monstruos supervivientes son: " +mapa.getListaMonsters().values());
-        System.out.println("Los cazadores supervivientes son: " +mapa.getListaHunters().values());
+        System.out.println("Han sobrevivido: " +mapa.getListaMonsters().size() +" monstruos");
+        //System.out.println("Los cazadores supervivientes son: " +mapa.getListaHunters().values());
     }
 
     public static void generarMonstruos(){
 
         Random random = new Random();
         nombresMonsters = new ArrayList<>(Arrays.asList("Rathalos", "Wyvern", "Relicto", "Gore Magala", "Laviente", "Laviente Berserker", "Raphinos", "Shogun Ceanataur"));
-        int vueltasAleatorias = random.nextInt(5) + 1;
+        int vueltasAleatorias = (int) (Math.random() * 5) + 1;
 
         for(int i = 0 ;  i<=vueltasAleatorias ; i++){
             int X = random.nextInt(mapa.getTamanio());
@@ -89,7 +89,7 @@ public class MonsterHunter extends Thread {
 
         Random random = new Random();
         //nombresHunters = new ArrayList<>(Arrays.asList("Maxi", "Pedro", "Relicto", "Gore Magala", "Laviente", "Laviente Berserker", "Raphinos", "Shogun Ceanataur"));
-        int vueltasAleatorias = random.nextInt(5) + 1;
+        int vueltasAleatorias = (int) (Math.random() * 5) + 1;
         for(int i = 0 ;  i<=vueltasAleatorias ; i++){
 
             int X = random.nextInt(mapa.getTamanio());
@@ -100,7 +100,7 @@ public class MonsterHunter extends Thread {
                 Y = random.nextInt(mapa.getTamanio());
             }
 
-            Hunter hunter = new Hunter(1, "Cazador "+i,0 , X, Y);
+            Hunter hunter = new Hunter(i, "Cazador "+(i+1),0 , X, Y);
             mapa.agregarHunter(hunter);
 
             Thread cazador = new Thread(new MonsterHunter(hunter));
@@ -167,7 +167,8 @@ public class MonsterHunter extends Thread {
     public synchronized static void explorar(Hunter hunter){
         for(Monster monster : mapa.getListaMonsters().values()){
             if(hunter.getPositionX() == monster.getPositionX() && hunter.getPositionY() == monster.getPositionY()){
-                if(mapa.pelea()){
+                boolean caza = mapa.pelea();
+                if(caza){
                     System.out.println(hunter.getNombre() + " ha cazado a " + monster.getName());
                     hunter.setMonstruosAtrapados(hunter.getMonstruosAtrapados()+1);
                     mapa.eliminarMonstruo(monster);
@@ -182,7 +183,7 @@ public class MonsterHunter extends Thread {
         System.out.println(hunter.getNombre()+ " no ha encontrado nada");
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

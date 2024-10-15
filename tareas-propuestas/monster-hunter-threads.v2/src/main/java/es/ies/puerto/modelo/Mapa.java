@@ -129,5 +129,13 @@ public class Mapa {
         return Objects.hash(mapId);
     }
 
-
+    @Override
+    public String toString() {
+        return "Mapa{" +
+                "mapId=" + mapId +
+                ", tamanio=" + tamanio +
+                ", listaHunters=" + listaHunters +
+                ", listaMonsters=" + listaMonsters +
+                '}';
+    }
 }
