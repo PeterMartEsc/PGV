@@ -22,6 +22,8 @@ public class Mapa {
     public Mapa(int mapId, int tamanio) {
         this.mapId = mapId;
         this.tamanio = tamanio;
+        this.listaHunters = new HashMap<>();
+        this.listaMonsters = new HashMap<>();
     }
 
     public int getMapId() {
@@ -64,6 +66,14 @@ public class Mapa {
         listaMonsters.put(monster.getId(), monster);
     }
 
+    public synchronized void eliminarHunter(Hunter hunter){
+        listaMonsters.remove(hunter.getId());
+    }
+
+    public synchronized void eliminarMonstruo(Monster monster){
+        listaMonsters.remove(monster.getId());
+    }
+
     public boolean pelea(){
         Random random = new Random();
         int result = random.nextInt(1);
@@ -72,6 +82,38 @@ public class Mapa {
         } else {
             return false;
         }
+    }
+    public synchronized boolean hayHunter (int X, int Y){
+        boolean hayHunter = false;
+
+        if(listaHunters.isEmpty()){
+            return hayHunter;
+        }
+
+        for(Hunter hunter : listaHunters.values()){
+
+            if(hunter.getPositionX() == X && hunter.getPositionY() == Y){
+                hayHunter = true;
+            }
+        }
+
+        return hayHunter;
+    }
+    public synchronized boolean hayMonstruo (int X, int Y){
+        boolean hayMonstruo = false;
+
+        if(listaMonsters.isEmpty()){
+            return hayMonstruo;
+        }
+
+        for(Monster monster : listaMonsters.values()){
+
+            if(monster.getPositionX() == X && monster.getPositionY() == Y){
+                hayMonstruo = true;
+            }
+        }
+
+        return hayMonstruo;
     }
 
     @Override
