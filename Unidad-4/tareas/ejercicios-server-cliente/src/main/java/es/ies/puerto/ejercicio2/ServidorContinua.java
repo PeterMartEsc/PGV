@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Servidor {
+public class ServidorContinua {
     public static void main(String[] args){
 
         int port = 1234;
@@ -29,9 +29,14 @@ public class Servidor {
             String message;
 
             while ((message = in.readLine()) != null) {
+                    if(message == "terminar"){
+                        break;
+                    }
                     System.out.println("Recibido: " + message);
                     out.println("Eco: " + message);  // Responde al cliente
             }
+
+            clientSocket.close();
 
         } catch (IOException e) {
             e.printStackTrace();

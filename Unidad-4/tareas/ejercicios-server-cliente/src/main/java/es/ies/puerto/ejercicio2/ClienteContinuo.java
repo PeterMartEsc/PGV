@@ -18,7 +18,7 @@ import java.net.Socket;
  *  - Implementa una condición de parada para finalizar el chat.
  */
 
-public class Cliente {
+public class ClienteContinuo {
     public static void main(String[] args) {
 
         String host = "localhost";
@@ -35,9 +35,10 @@ public class Cliente {
 
             String userInput;
 
-            userInput = console.readLine();
-            out.println(userInput);
-            System.out.println("Respuesta del servidor: " + in.readLine());
+            while (!(userInput = console.readLine()).equals("terminar")) {
+                out.println(userInput);
+                System.out.println("Respuesta del servidor: " + in.readLine());
+            }
 
 
         } catch (IOException e) {
