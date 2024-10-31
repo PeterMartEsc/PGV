@@ -26,6 +26,12 @@ public class ClienteContinuo {
 
         Socket socket = null;
 
+        sendMessage(socket, port, host);
+
+    }
+
+    public static void sendMessage(Socket socket, int port, String host){
+
         try {
 
             socket = new Socket(host, port);
@@ -53,8 +59,5 @@ public class ClienteContinuo {
                 throw new RuntimeException(e);
             }
         }
-
-
-
     }
 }
