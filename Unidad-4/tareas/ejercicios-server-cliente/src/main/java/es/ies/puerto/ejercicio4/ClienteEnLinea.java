@@ -13,9 +13,17 @@ import java.net.*;
 public class ClienteEnLinea {
     public static void main(String[] args) {
 
-        System.out.println("Cliente de chat iniciado...");
+        for(int i = 3; i<=4; i++){
+            String puerto = "123"+i;
 
-        try (Socket socket = new Socket("localhost", 1234);
+            System.out.println("Cliente"+i+ " de chat iniciado en puerto" + puerto + " ...");
+            crearClienteEnLinea(Integer.parseInt(puerto));
+        }
+    }
+
+    public static void crearClienteEnLinea(int puerto){
+
+        try (Socket socket = new Socket("localhost", puerto);
 
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -36,9 +44,11 @@ public class ClienteEnLinea {
             readThread.start();
 
             String userInput;
-            while ((userInput = stdIn.readLine()) != null) {
+
+            while (!(userInput = stdIn.readLine()).equals("terminar")) {
                 out.println(userInput);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
