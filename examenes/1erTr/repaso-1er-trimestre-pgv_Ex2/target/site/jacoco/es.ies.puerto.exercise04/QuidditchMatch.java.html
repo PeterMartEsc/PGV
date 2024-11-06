@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QuidditchMatch.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ejercicio-logica-I</a> &gt; <a href="index.source.html" class="el_package">es.ies.puerto.exercise04</a> &gt; <span class="el_source">QuidditchMatch.java</span></div><h1>QuidditchMatch.java</h1><pre class="source lang-java linenums">package es.ies.puerto.exercise04;
+
+import java.util.Random;
+
+public class QuidditchMatch implements Runnable{
+    private String name;
+<span class="fc" id="L7">    private int points = 0;</span>
+<span class="fc" id="L8">    private int snitchProgress = 0;</span>
+    private static final int GOAL = 100;
+<span class="fc" id="L10">    private static boolean winnerDeclared = false;</span>
+    private boolean isFinder;
+
+<span class="fc" id="L13">    public QuidditchMatch() {}</span>
+
+    public String getName() {
+<span class="fc" id="L16">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L20">        this.name = name;</span>
+<span class="fc" id="L21">    }</span>
+
+    public boolean isFinder() {
+<span class="nc" id="L24">        return isFinder;</span>
+    }
+
+    public void setFinder(boolean finder) {
+<span class="fc" id="L28">        isFinder = finder;</span>
+<span class="fc" id="L29">    }</span>
+
+    @Override
+    public void run() {
+<span class="fc" id="L33">        Random random = new Random();</span>
+<span class="pc bpc" id="L34" title="1 of 6 branches missed.">        while (points &lt; GOAL &amp;&amp; snitchProgress &lt; GOAL &amp;&amp; !winnerDeclared) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (!isFinder) {</span>
+<span class="fc" id="L36">                int incrementPoints = random.nextInt(10) + 1;</span>
+<span class="fc" id="L37">                points =+ incrementPoints;</span>
+<span class="fc" id="L38">                System.out.println(getName() + &quot; has &quot; + points + &quot; points.&quot;);</span>
+            }
+
+<span class="fc" id="L41">            int progressAdd = random.nextInt(10) + 1;</span>
+<span class="fc" id="L42">            snitchProgress += progressAdd;</span>
+
+<span class="fc" id="L44">            System.out.println(&quot;Snitch search by &quot; + name + &quot;: &quot; + snitchProgress + &quot;%&quot;);</span>
+
+<span class="pc bpc" id="L46" title="2 of 6 branches missed.">            if (points &gt;= GOAL || snitchProgress &gt;= GOAL &amp;&amp; !winnerDeclared) {</span>
+<span class="fc" id="L47">                winnerDeclared = true;</span>
+<span class="fc" id="L48">                System.out.println(name + &quot; has won&quot;);</span>
+            }
+            try {
+<span class="fc" id="L51">                Thread.sleep(500);</span>
+
+
+<span class="nc" id="L54">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L55">                e.printStackTrace();</span>
+<span class="fc" id="L56">            }</span>
+<span class="fc" id="L57">        }</span>
+<span class="fc" id="L58">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Exercise04.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ejercicio-logica-I</a> &gt; <a href="index.source.html" class="el_package">es.ies.puerto.exercise04</a> &gt; <span class="el_source">Exercise04.java</span></div><h1>Exercise04.java</h1><pre class="source lang-java linenums">package es.ies.puerto.exercise04;
+
+/**
+ * Simula un partido de Quidditch, donde dos cazadores compiten para anotar más goles.
+ * Los cazadores son hilos que anotan puntos aleatoriamente. Adicionalmente, crea un
+ * tercer hilo que representa al buscador, que trata de atrapar la Snitch dorada.
+ * El partido termina cuando uno de los equipos atrapa la Snitch
+ */
+<span class="nc" id="L9">public class Exercise04 {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L11">        QuidditchMatch match1 = new QuidditchMatch();</span>
+<span class="nc" id="L12">        QuidditchMatch match2 = new QuidditchMatch();</span>
+<span class="nc" id="L13">        QuidditchMatch match3 = new QuidditchMatch();</span>
+
+<span class="nc" id="L15">        match1.setName(&quot;Hunter 1&quot;);</span>
+<span class="nc" id="L16">        match1.setFinder(false);</span>
+<span class="nc" id="L17">        match2.setName(&quot;Hunter 2&quot;);</span>
+<span class="nc" id="L18">        match2.setFinder(false);</span>
+<span class="nc" id="L19">        match3.setName(&quot;Finder&quot;);</span>
+<span class="nc" id="L20">        match3.setFinder(false);</span>
+
+
+<span class="nc" id="L23">        Thread hunter1 = new Thread(match1);</span>
+<span class="nc" id="L24">        Thread hunter2 = new Thread(match2);</span>
+<span class="nc" id="L25">        Thread finder = new Thread(match3);</span>
+
+<span class="nc" id="L27">        hunter1.start();</span>
+<span class="nc" id="L28">        hunter2.start();</span>
+<span class="nc" id="L29">        finder.start();</span>
+<span class="nc" id="L30">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

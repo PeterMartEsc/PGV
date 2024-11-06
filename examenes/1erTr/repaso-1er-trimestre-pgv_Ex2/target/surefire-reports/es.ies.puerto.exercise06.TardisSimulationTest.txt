@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: es.ies.puerto.exercise06.TardisSimulationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.512 s - in es.ies.puerto.exercise06.TardisSimulationTest

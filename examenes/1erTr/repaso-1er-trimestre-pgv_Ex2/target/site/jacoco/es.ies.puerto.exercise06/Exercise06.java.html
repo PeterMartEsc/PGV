@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Exercise06.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ejercicio-logica-I</a> &gt; <a href="index.source.html" class="el_package">es.ies.puerto.exercise06</a> &gt; <span class="el_source">Exercise06.java</span></div><h1>Exercise06.java</h1><pre class="source lang-java linenums">package es.ies.puerto.exercise06;
+
+/**
+ * Simula viajes en el tiempo de la TARDIS con varios hilos que representan diferentes épocas.
+ * Cada hilo debe intentar llegar al destino más rápido que los demás. La duración de cada viaje
+ * debe ser aleatoria y el destino final se alcanza cuando uno de los hilos termina su ejecución.
+ */
+<span class="nc" id="L8">public class Exercise06 {</span>
+    public static void main(String[] args) {
+<span class="nc" id="L10">        TardisSimulation tardisSimulation1 = new TardisSimulation();</span>
+<span class="nc" id="L11">        TardisSimulation tardisSimulation2 = new TardisSimulation();</span>
+
+<span class="nc" id="L13">        tardisSimulation1.setPeriodName(&quot;Period1&quot;);</span>
+<span class="nc" id="L14">        tardisSimulation2.setPeriodName(&quot;Period2&quot;);</span>
+
+<span class="nc" id="L16">        Thread thread1 = new Thread(tardisSimulation1);</span>
+<span class="nc" id="L17">        Thread thread2 = new Thread(tardisSimulation2);</span>
+
+<span class="nc" id="L19">        thread1.start();</span>
+<span class="nc" id="L20">        thread2.start();</span>
+
+<span class="nc" id="L22">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

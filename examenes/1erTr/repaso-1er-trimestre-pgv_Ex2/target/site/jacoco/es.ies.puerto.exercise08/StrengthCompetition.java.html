@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StrengthCompetition.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ejercicio-logica-I</a> &gt; <a href="index.source.html" class="el_package">es.ies.puerto.exercise08</a> &gt; <span class="el_source">StrengthCompetition.java</span></div><h1>StrengthCompetition.java</h1><pre class="source lang-java linenums">package es.ies.puerto.exercise08;
+
+import java.util.Random;
+
+/**
+ *  Simula una competencia de fuerza entre Thor y Hulk. Ambos héroes tienen que levantar pesas (representados
+ *  por incrementos de peso levantado en cada iteración del hilo) durante un tiempo limitado. Al final, el hilo
+ *  que haya levantado más peso gana la competencia.
+ */
+public class StrengthCompetition implements Runnable{
+    private String heroName;
+<span class="fc" id="L12">    private int progress = 0;</span>
+    private static final int MAX_WEIGHT_PER_ITERATION = 100;
+    private static final long COMPETITION_DURATION = 5000;
+<span class="fc" id="L15">    private static boolean winnerDeclared = false;</span>
+
+<span class="fc" id="L17">    public StrengthCompetition() {</span>
+<span class="fc" id="L18">    }</span>
+
+    public String getHeroName() {
+<span class="fc" id="L21">        return heroName;</span>
+    }
+
+    public void setHeroName(String heroName) {
+<span class="fc" id="L25">        this.heroName = heroName;</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public void run() {
+<span class="fc" id="L30">        Random random = new Random();</span>
+<span class="fc" id="L31">        long startTime = System.currentTimeMillis();</span>
+<span class="fc" id="L32">        long timePassed = 0;</span>
+
+<span class="pc bpc" id="L34" title="1 of 4 branches missed.">        while ((timePassed &lt; COMPETITION_DURATION) &amp;&amp; !winnerDeclared) {</span>
+
+<span class="fc" id="L36">            int weightLifted = random.nextInt(MAX_WEIGHT_PER_ITERATION) + 1;</span>
+<span class="fc" id="L37">            progress += weightLifted;</span>
+<span class="fc" id="L38">            long endTimeIteration = System.currentTimeMillis();</span>
+<span class="fc" id="L39">            timePassed = (endTimeIteration-startTime);</span>
+
+<span class="fc" id="L41">            System.out.println(heroName + &quot; has lifted &quot; + weightLifted + &quot;. Total weight: &quot; + progress + &quot;kg.&quot;);</span>
+
+<span class="fc bfc" id="L43" title="All 4 branches covered.">            if (timePassed &gt;= COMPETITION_DURATION &amp;&amp; !winnerDeclared){</span>
+<span class="fc" id="L44">                winnerDeclared = true;</span>
+<span class="fc" id="L45">                System.out.println(getHeroName() + &quot; has won with a total of &quot; + progress + &quot;kg lifted&quot;);</span>
+            }
+
+            try {
+<span class="fc" id="L49">                Thread.sleep(500);</span>
+<span class="nc" id="L50">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L51">                e.printStackTrace();</span>
+<span class="fc" id="L52">            }</span>
+<span class="fc" id="L53">        }</span>
+<span class="fc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

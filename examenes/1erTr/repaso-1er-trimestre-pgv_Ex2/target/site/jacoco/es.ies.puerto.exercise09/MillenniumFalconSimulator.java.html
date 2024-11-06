@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MillenniumFalconSimulator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ejercicio-logica-I</a> &gt; <a href="index.source.html" class="el_package">es.ies.puerto.exercise09</a> &gt; <span class="el_source">MillenniumFalconSimulator.java</span></div><h1>MillenniumFalconSimulator.java</h1><pre class="source lang-java linenums">package es.ies.puerto.exercise09;
+
+import java.util.Random;
+
+/**
+ * Crea una simulación del Millenium Falcon, donde Han Solo y Chewbacca están controlando la nave en medio de una
+ * batalla espacial. Un hilo representa a Han Solo controlando la velocidad, mientras que otro hilo representa a
+ * Chewbacca manejando los escudos. Si alguno de los sistemas falla, la nave podría ser destruida.
+ */
+public class MillenniumFalconSimulator implements Runnable{
+    private String name;
+<span class="fc" id="L12">    private int progress = 0;</span>
+    private static final int GOAL = 100;
+<span class="fc" id="L14">    private static boolean milleniumDestroyed = false;</span>
+<span class="fc" id="L15">    private static boolean shieldsReady = false;</span>
+<span class="fc" id="L16">    private static boolean speedReady = false;</span>
+
+<span class="fc" id="L18">    public MillenniumFalconSimulator() {}</span>
+
+    public String getName() {
+<span class="fc" id="L21">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L25">        this.name = name;</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public void run() {
+<span class="fc" id="L30">        Random random = new Random();</span>
+<span class="pc bpc" id="L31" title="1 of 4 branches missed.">        while (progress &lt; GOAL &amp;&amp; !milleniumDestroyed) {</span>
+<span class="fc" id="L32">            int increment = random.nextInt(10) + 1;</span>
+<span class="fc" id="L33">            progress += increment;</span>
+
+<span class="fc" id="L35">            System.out.println(getName() + &quot;'s progress: &quot; + increment + &quot;%. Total: &quot; + progress + &quot;%.&quot;);</span>
+
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">            if (progress &gt;= GOAL) {</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">                if (getName().equals(&quot;Han Solo&quot;)) {</span>
+<span class="nc" id="L39">                    speedReady = true;</span>
+<span class="nc" id="L40">                    System.out.println(&quot;Maximum speed achieved by &quot; + getName() + &quot;!&quot;);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                } else if (getName().equals(&quot;Chewbacca&quot;)) {</span>
+<span class="nc" id="L42">                    shieldsReady = true;</span>
+<span class="nc" id="L43">                    System.out.println(&quot;Maximum shields achieved by &quot; + getName() + &quot;!&quot;);</span>
+                }
+            }
+
+<span class="pc bpc" id="L47" title="5 of 6 branches missed.">            if (speedReady &amp;&amp; shieldsReady &amp;&amp; !milleniumDestroyed) {</span>
+<span class="nc" id="L48">                System.out.println(&quot;Speed and shields at maximum capacity! We're saved&quot;);</span>
+<span class="nc" id="L49">                break;</span>
+            }
+
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            if (random.nextInt(100) &lt; 10) {</span>
+<span class="fc" id="L53">                milleniumDestroyed = true;</span>
+<span class="fc" id="L54">                System.out.println(&quot;Millennium Falcon has been destroyed.&quot;);</span>
+<span class="fc" id="L55">                break;</span>
+            }
+
+            try {
+<span class="fc" id="L59">                Thread.sleep(500);</span>
+<span class="nc" id="L60">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L61">                e.printStackTrace();</span>
+<span class="fc" id="L62">            }</span>
+<span class="fc" id="L63">        }</span>
+<span class="fc" id="L64">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

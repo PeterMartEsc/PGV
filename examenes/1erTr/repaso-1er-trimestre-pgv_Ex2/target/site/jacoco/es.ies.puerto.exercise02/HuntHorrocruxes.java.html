@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HuntHorrocruxes.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ejercicio-logica-I</a> &gt; <a href="index.source.html" class="el_package">es.ies.puerto.exercise02</a> &gt; <span class="el_source">HuntHorrocruxes.java</span></div><h1>HuntHorrocruxes.java</h1><pre class="source lang-java linenums">package es.ies.puerto.exercise02;
+
+import java.util.Random;
+
+/**
+ * Imagina que Harry, Hermione y Ron están buscando Horrocruxes. Cada personaje está
+ * representado por un hilo que busca en una ubicación diferente del mundo.
+ * El primer hilo que encuentra un Horrocrux debe detener a los demás y terminar la
+ * búsqueda. Elige el tiempo de búsqueda de manera aleatoria para cada hilo.
+ */
+public class HuntHorrocruxes implements Runnable {
+    private String name;
+<span class="fc" id="L13">    private static boolean found = false;</span>
+<span class="fc" id="L14">    private int horrocruxDistance = 80;</span>
+    private String location;
+
+<span class="fc" id="L17">    public HuntHorrocruxes() {}</span>
+
+
+    /**
+     * Getters and setters
+     */
+    public String getName() {
+<span class="fc" id="L24">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="fc" id="L28">        this.name = name;</span>
+<span class="fc" id="L29">    }</span>
+
+    public String getLocation() {
+<span class="fc" id="L32">        return location;</span>
+    }
+
+    public void setLocation(String location) {
+<span class="fc" id="L36">        this.location = location;</span>
+<span class="fc" id="L37">    }</span>
+
+    @Override
+    public void run() {
+<span class="fc" id="L41">        Random random = new Random();</span>
+
+<span class="fc" id="L43">        int distanceAdvanced = 0;</span>
+<span class="fc" id="L44">        int searchTime = (random.nextInt(50)+10);</span>
+<span class="fc" id="L45">        long initialTime = System.currentTimeMillis();</span>
+<span class="fc" id="L46">        long timePassed = 0;</span>
+
+<span class="fc" id="L48">        System.out.println(getName() + &quot;'s time to find: &quot; + searchTime);</span>
+
+<span class="pc bpc" id="L50" title="1 of 4 branches missed.">        while (!found &amp;&amp; timePassed &lt; searchTime){</span>
+<span class="fc" id="L51">            int advanceSearch = random.nextInt(100)+10;</span>
+<span class="fc" id="L52">            distanceAdvanced+=advanceSearch;</span>
+<span class="fc" id="L53">            long endTime = System.currentTimeMillis();</span>
+
+<span class="fc" id="L55">            timePassed = (endTime - initialTime);</span>
+
+<span class="fc" id="L57">            System.out.println(getName() + &quot; advanced &quot; + distanceAdvanced);</span>
+
+<span class="pc bpc" id="L59" title="1 of 4 branches missed.">            if (distanceAdvanced &gt;= horrocruxDistance &amp;&amp; !found){</span>
+<span class="fc" id="L60">                found = true;</span>
+<span class="fc" id="L61">                System.out.println(getName() + &quot; has found a Horrocrux at &quot; + getLocation());</span>
+<span class="fc" id="L62">                System.out.println(getName() + &quot;'s time to find: &quot; + searchTime);</span>
+<span class="fc" id="L63">                break;</span>
+            }
+
+<span class="pc bpc" id="L66" title="3 of 4 branches missed.">            if (timePassed &gt;= searchTime &amp;&amp; !found){</span>
+<span class="nc" id="L67">                System.out.println(getName() + &quot; has not found the Horrocrux in &quot; + getLocation());</span>
+<span class="nc" id="L68">                System.out.println(&quot;Horrocrux was at: &quot; + (horrocruxDistance-distanceAdvanced));</span>
+<span class="nc" id="L69">                break;</span>
+            }
+
+            try{
+<span class="fc" id="L73">                Thread.sleep(500);</span>
+<span class="nc" id="L74">            } catch (InterruptedException e) {</span>
+<span class="nc" id="L75">                throw new RuntimeException(e);</span>
+<span class="fc" id="L76">            }</span>
+
+
+<span class="fc" id="L79">        }</span>
+<span class="fc" id="L80">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
